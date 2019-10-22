@@ -1,0 +1,14 @@
+version: '2'
+
+services:
+  edb:
+    image: ehasan/ewalletdb
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=orion123@
+  ebl:
+    image: ehasan/ebl
+    ports:
+      - 80:8002
+    depends_on:
+      - edb

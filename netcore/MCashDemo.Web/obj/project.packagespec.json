@@ -1,0 +1,41 @@
+﻿{
+  "version": "1.0.0",
+  "restore": {
+    "projectUniqueName": "/home/shafqat/projects/ewallet/wallet/MCashDemo.Web/MCashDemo.Web.csproj",
+    "projectName": "MCashDemo.Web",
+    "projectPath": "/home/shafqat/projects/ewallet/wallet/MCashDemo.Web/MCashDemo.Web.csproj",
+    "outputPath": "/home/shafqat/projects/ewallet/wallet/MCashDemo.Web/obj/",
+    "projectStyle": "PackageReference",
+    "originalTargetFrameworks": [
+      "netcoreapp2.0"
+    ],
+    "frameworks": {
+      "netcoreapp2.0": {
+        "projectReferences": {
+          "/home/shafqat/projects/ewallet/wallet/MCash.Business/MCash.Business.csproj": {
+            "projectPath": "/home/shafqat/projects/ewallet/wallet/MCash.Business/MCash.Business.csproj"
+          }
+        }
+      }
+    }
+  },
+  "frameworks": {
+    "netcoreapp2.0": {
+      "dependencies": {
+        "Microsoft.NETCore.App": {
+          "target": "Package",
+          "version": "2.0.0"
+        },
+        "Microsoft.AspNetCore.All": {
+          "target": "Package",
+          "version": "2.0.0"
+        }
+      },
+      "imports": [
+        "net461"
+      ],
+      "assetTargetFallback": true,
+      "warn": true
+    }
+  }
+}

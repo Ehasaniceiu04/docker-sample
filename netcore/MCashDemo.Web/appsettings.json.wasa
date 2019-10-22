@@ -1,0 +1,20 @@
+﻿{
+  "Logging": {
+    "IncludeScopes": false,
+    "LogLevel": {
+      "Default": "Warning"
+    }
+  },
+  "ConnectionStrings": {
+    "MCashDemoConnectionString": "Data Source=edb;Initial Catalog=MCashWasa;Integrated Security=False;uid=sa;pwd=orion123@"
+  },
+  "UserProfile": {
+    "Name": "Mr. Ehasan",
+    "SiteImageUrl": "Wasa1.png",
+    "MobileNo": "01961859258",
+    "ProfileImageUrl": "profile_small.jpg",
+    "FooterName": "WASA",
+    "WebSiteName": "WASA"
+  }
+
+}
