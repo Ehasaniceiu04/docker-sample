@@ -23,7 +23,7 @@ namespace MCashDemo.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.Configure<ConnectionStrings>(Configuration.GetSection("ConnectionStrings"));
+            services.Configure<ConnectionStrings>(Configuration.GetSection("MCashDemoConnectionString"));
             services.Configure<UserProfile>(Configuration.GetSection("UserProfile"));
         }
 

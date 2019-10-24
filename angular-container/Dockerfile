@@ -1,17 +1,11 @@
-##### Stage 1
-FROM node:latest as node
-LABEL author="Ehasanul Hoque"
-WORKDIR /app
-COPY package.json package.json
+FROM node:10.16.3-alpine as node
+
+WORKDIR /opt/
+COPY package.json .
 RUN npm install
 COPY . .
-RUN npm run build -- --prod
+RUN ./node_modules/@angular/cli/bin/ng build --prod
 
-##### Stage 2
-# FROM nginx:alpine
-# VOLUME /var/cache/nginx
-# COPY --from=node /app/dist /usr/share/nginx/html
-# COPY ./config/nginx.conf /etc/nginx/conf.d/default.conf
-
-# docker build -t nginx-angular -f nginx.prod.dockerfile .
-# docker run -p 8080:80 nginx-angular
+FROM nginx
+RUN rm /usr/share/nginx/html/*
+COPY --from=node /opt/dist/angular-container/. /usr/share/nginx/html/
