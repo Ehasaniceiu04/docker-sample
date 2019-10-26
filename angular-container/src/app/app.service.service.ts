@@ -9,6 +9,6 @@ export class AppService {
   constructor(private http:HttpClient) { }
 
   getAllCloudProvider(){
-    return this.http.get('http://localhost:1141/api/cloudprovider')
+    return this.http.get('http://localhost:8000/api/cloudprovider')
   }
 }
