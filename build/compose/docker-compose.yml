@@ -1,0 +1,45 @@
+version: '2'
+
+services:
+
+  api:
+    container_name: netcoreapi
+    image: ehasan/netcoreapi
+    build:
+      context: ../../dotnetcore/web.dotnetcore
+      dockerfile: Dockerfile
+    ports:
+      - "8000:80"
+    networks:
+      - app-network
+
+  web:
+    container_name: ngapp
+    image: ehasan/ngapp
+    build:
+      context: ../../angular-container
+      dockerfile: Dockerfile
+    ports:
+      - "4200:80"
+    depends_on:
+      - api
+    networks:
+      - app-network
+      
+  # Disabled in case someone is running this on Windows (OK to uncomment if on Mac/Linux)
+  # cadvisor:
+  #   container_name: cadvisor
+  #   image: google/cadvisor
+  #   volumes:
+  #     - /:/rootfs:ro
+  #     - /var/run:/var/run:rw
+  #     - /sys:/sys:ro
+  #     - /var/lib/docker/:/var/lib/docker:ro
+  #   ports:
+  #     - "8080:8080"
+  #   networks:
+  #     - app-network
+
+networks:
+  app-network:
+    driver: bridge
