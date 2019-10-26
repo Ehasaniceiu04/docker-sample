@@ -7,8 +7,8 @@
  RUN dotnet restore
 
  #stage 3
- COPY . .
- RUN dotnet publish --output ./out --configuration Release
+ COPY . ./
+ RUN dotnet publish -c Release -o out
 
 #stage 4
 FROM microsoft/aspnetcore
