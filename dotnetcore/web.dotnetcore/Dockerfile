@@ -1,20 +1,19 @@
- # Stage 1
- FROM microsoft/aspnetcore-build AS builder
- WORKDIR /publish
-
- #stage
- COPY *.csproj .
- RUN dotnet restore
-
- #stage 3
- COPY . .
- RUN dotnet publish --output ./out --configuration Release
-
-#stage 4
-FROM microsoft/aspnetcore
+FROM microsoft/aspnetcore-build:2.0 AS build-env
 WORKDIR /app
-COPY from --from=builder /publish/out .
-ENTRYPOINT ['dotnet','web.dotnetcore.dll']
+
+# copy csproj and restore as distinct layers
+COPY *.csproj ./
+RUN dotnet restore
+
+# copy everything else and build
+COPY . ./
+RUN dotnet publish -c Release -o out
+
+# build runtime image
+FROM microsoft/aspnetcore:2.0
+WORKDIR /app
+COPY --from=build-env /app/out .
+ENTRYPOINT ["dotnet", "web.dotnetcore.dll"]
 
 
 
