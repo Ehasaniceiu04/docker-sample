@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AppService } from './app.service.service';
+import { AppService } from './app.service';
 
 @Component({
   selector: 'app-root',
@@ -7,9 +7,9 @@ import { AppService } from './app.service.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Cloud Service Providers';
+  title = 'Online Orders';
 
-  displayedColumns: string[] = ['id', 'name',];
+  displayedColumns: string[] = ['customerName','customerContactNo','customerEmail', 'productName','quantity','totalPrice'];
   dataSource:any = [];
   constructor(private appService:AppService){
         this.appService.getAllCloudProvider().subscribe(item=>{
